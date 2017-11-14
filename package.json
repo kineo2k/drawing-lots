@@ -1,0 +1,25 @@
+{
+  "name": "drawing-lots",
+  "version": "0.0.1",
+  "description": "제비 뽑기 with TypeScript",
+  "main": "index.js",
+  "scripts": {
+    "transpile": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kineo2k/drawing-lots.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kineo2k/drawing-lots/issues"
+  },
+  "homepage": "https://github.com/kineo2k/drawing-lots#readme",
+  "dependencies": {
+    "tsd": "^0.6.5",
+    "typescript": "^2.6.1"
+  }
+}
