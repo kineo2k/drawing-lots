@@ -1,4 +1,4 @@
-import { Game } from "./com/mrblue/drawing-lots/Game";
+import { GameLauncher } from "./com/mrblue/drawing-lots/GameLauncher";
 
 /*
 class App {
@@ -8,4 +8,4 @@ class App {
 }
 */
 
-new Game().start();
+new GameLauncher().start();

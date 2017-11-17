@@ -1,3 +1,5 @@
+import { GameLauncher } from "../GameLauncher";
+
 export interface ICommand {
-    execute();
+    execute(gameLaucher: GameLauncher);
 }

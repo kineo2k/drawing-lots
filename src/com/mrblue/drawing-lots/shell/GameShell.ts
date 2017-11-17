@@ -1,5 +1,3 @@
-import { Game } from "../Game";
-
 export class GameShell {
     private static _shell: GameShell;
     private _isListen = false;

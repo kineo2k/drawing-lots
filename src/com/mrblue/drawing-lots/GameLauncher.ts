@@ -2,7 +2,7 @@ import { GameShell } from "./shell/GameShell";
 import { CommandInterpreter } from "./shell/CommandInterpreter";
 import { ICommand } from "./commands/ICommand";
 
-export class Game {
+export class GameLauncher {
     private _interpreter: CommandInterpreter;
 
     constructor() {
@@ -30,8 +30,12 @@ export class Game {
         );
     }
 
+    resumeInput() {
+        GameShell.shell.print("원하는 메뉴 번호를 입력하세요 (1~3) : ");
+    }
+
     private _executeCommand(readLine: string) {
         const command = this._interpreter.interpret(readLine);
-        command.execute();
+        command.execute(this);
     }
 }
