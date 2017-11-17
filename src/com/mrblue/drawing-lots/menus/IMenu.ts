@@ -1,5 +1,5 @@
 import { GameLauncher } from "../GameLauncher";
 
-export interface ICommand {
+export interface IMenu {
     execute(gameLaucher: GameLauncher);
 }

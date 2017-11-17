@@ -1,13 +1,12 @@
 import { GameShell } from "./shell/GameShell";
-import { CommandInterpreter } from "./shell/CommandInterpreter";
-import { ICommand } from "./commands/ICommand";
+import { MenuInterpreter } from "./menus/MenuInterpreter";
+import { IMenu } from "./menus/IMenu";
 
 export class GameLauncher {
-    private _interpreter: CommandInterpreter;
+    private _interpreter: MenuInterpreter;
 
     constructor() {
-        this._interpreter = new CommandInterpreter();
-        console.log(this._interpreter);
+        this._interpreter = new MenuInterpreter();
     }
 
     start() {

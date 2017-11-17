@@ -1,8 +1,8 @@
-import { ICommand } from "../ICommand";
+import { IMenu } from "../IMenu";
 import { GameShell } from "../../shell/GameShell";
 import { GameLauncher } from "../../GameLauncher";
 
-export class CMDEmpty implements ICommand {
+export class MenuEmpty implements IMenu {
     execute(gameLauncher: GameLauncher) {
         gameLauncher.resumeInput();
     }
