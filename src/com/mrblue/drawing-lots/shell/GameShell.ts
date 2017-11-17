@@ -1,6 +1,5 @@
 export class GameShell {
     private static _shell: GameShell;
-    private _isListen = false;
 
     private constructor() {
     }
@@ -14,12 +13,10 @@ export class GameShell {
     }
 
     listen(callback: Function) {
-        if (this._isListen)
-            return;
+        if (process.stdin.isPaused)
+            process.stdin.resume();
         
-        this._isListen = true;
-
-        process.stdin.resume();
+        process.stdin.removeAllListeners();
         process.stdin.on("data", function(buffer) {
             const readLine = buffer.toString().trim();
             callback(readLine);
