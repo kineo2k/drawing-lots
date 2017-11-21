@@ -3,15 +3,15 @@ import { MenuInterpreter } from "./menus/MenuInterpreter";
 import { IMenu } from "./menus/IMenu";
 
 export class GameLauncher {
-    private _interpreter: MenuInterpreter;
+    private _menus: MenuInterpreter;
 
     constructor() {
-        this._interpreter = new MenuInterpreter();
+        this._menus = new MenuInterpreter();
     }
 
     start() {
         GameShell.shell.print("제비 뽑기를 시작합니다 ^^ 와~~ 짝짝짝짝!!!");
-        GameShell.shell.listen(this._executeCommand.bind(this));
+        GameShell.shell.listen(this._executeMenu.bind(this));
 
         this._printMenus();
     }
@@ -33,8 +33,8 @@ export class GameLauncher {
         GameShell.shell.print("원하는 메뉴 번호를 입력하세요 (1~3) : ");
     }
 
-    private _executeCommand(readLine: string) {
-        const command = this._interpreter.interpret(readLine);
-        command.execute(this);
+    private _executeMenu(readLine: string) {
+        const menu = this._menus.interpret(readLine);
+        menu.execute(this);
     }
 }

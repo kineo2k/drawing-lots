@@ -27,6 +27,10 @@ export class GameShell {
         process.stdout.write(msg);
     }
 
+    println(msg: string = "") {
+        process.stdout.write(msg + "\n");
+    }
+
     end() {
         process.stdout.end();
     }

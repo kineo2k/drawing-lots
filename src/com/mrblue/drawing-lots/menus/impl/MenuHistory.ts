@@ -4,7 +4,7 @@ import { GameLauncher } from "../../GameLauncher";
 
 export class MenuHistory implements IMenu {
     execute(gameLauncher: GameLauncher) {
-        GameShell.shell.print("게임 이력을 보여줍니다.\n");
+        GameShell.shell.println("게임 이력을 보여줍니다.");
         
         gameLauncher.resumeInput();
     }

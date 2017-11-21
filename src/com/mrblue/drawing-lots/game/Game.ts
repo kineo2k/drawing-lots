@@ -1,16 +1,40 @@
 import { GameShell } from "../shell/GameShell";
+import { IStage } from "./stages/IStage";
+import { StageRegisterPlayers } from "./stages/impl/StageRegisterPlayers";
+import { StageNumberOfWinners } from "./stages/impl/StageNumberOfWinners";
+import { GameData } from "./GameData";
+import { StageDrawingLots } from "./stages/impl/StageDrawingLots";
 
 export class Game {
-    start() {
-        GameShell.shell.print("제비 뽑기를 시작합니다!!");
+    private _stages: Array<IStage>;
 
-        GameShell.shell.listen(this._executeCommand.bind(this));
+    constructor() {
+        this._initStages();
     }
 
-    private _executeCommand(readLine: string) {
-        // const command = this._interpreter.interpret(readLine);
-        // command.execute(this);
-   
-        GameShell.shell.print(">>" + readLine);
+    private _initStages() {
+        const data = new GameData();
+
+        this._stages = [
+            new StageRegisterPlayers(data),
+            new StageNumberOfWinners(data),
+            new StageDrawingLots(data)
+        ];
+    }
+
+    start() {
+        GameShell.shell.println("제비 뽑기를 시작할께유~~!");
+        
+        this._stages.forEach(function(stage, index) {
+            if (index === 0)
+                return;
+            
+            const prevStage = this._stages[index - 1];
+            prevStage.nextStage = stage;
+        }.bind(this));
+
+        const firstStage = this._stages[0];
+        GameShell.shell.print(firstStage.prompt);
+        GameShell.shell.listen(firstStage.play.bind(firstStage));
     }
 }
