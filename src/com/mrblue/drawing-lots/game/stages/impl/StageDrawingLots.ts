@@ -32,21 +32,19 @@ export class StageDrawingLots implements IStage {
             tmpArray = drawingResult[1];
         }
 
-        GameShell.shell.print(winners.join(", "));
-        GameShell.shell.println("\n\n");
-
+        GameShell.shell.print(`  당첨자 : ${winners.join(", ")}\n  축하합니다 ^^\n\n`);
+        
         new GameLauncher().start();
     }
 
     private _drawing(arr: Array<string>): [string, string[]] {
         const randomIndex = this._makeRandom(0, arr.length);
-        console.log(">> " + arr.join("") + " >> " + arr.length + " >> "+ randomIndex);
         const player = arr[randomIndex];
-        delete arr[randomIndex];
+        arr.splice(randomIndex, 1);
         return [player, arr];
     }
 
-    private _makeRandom(min: number = 0, max: number = 1){
+    private _makeRandom(min: number = 0, max: number = 1) {
         const randVal = Math.random() * (max - min) + min;
         return Math.floor(randVal);
     }
