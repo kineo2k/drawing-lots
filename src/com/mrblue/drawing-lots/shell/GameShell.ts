@@ -1,3 +1,5 @@
+const chalk = require('chalk');
+
 export class GameShell {
     private static _shell: GameShell;
 
@@ -23,12 +25,22 @@ export class GameShell {
         });
     }
 
-    print(msg: string = "") {
-        process.stdout.write(msg);
+    clear() {
+        process.stdout.write("\x1Bc");
     }
 
-    println(msg: string = "") {
-        process.stdout.write(msg + "\n");
+    print(msg: string = "", withHighlight: boolean = false) {
+        if (withHighlight)
+            process.stdout.write(chalk.blue(msg));
+        else
+            process.stdout.write(msg);
+    }
+
+    println(msg: string = "", withHighlight: boolean = false) {
+        if (withHighlight)
+            process.stdout.write(chalk.blue(msg + "\n"));
+        else
+            process.stdout.write(msg + "\n");
     }
 
     end() {

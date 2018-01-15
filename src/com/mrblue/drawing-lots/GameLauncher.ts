@@ -10,7 +10,8 @@ export class GameLauncher {
     }
 
     start() {
-        GameShell.shell.print("제비 뽑기를 시작합니다 ^^ 와~~ 짝짝짝짝!!!");
+        GameShell.shell.clear();
+        GameShell.shell.print("제비 뽑기를 시작합니다 ^^ 와~~ 짝짝짝짝!!!", true);
         GameShell.shell.listen(this._executeMenu.bind(this));
 
         this._printMenus();
@@ -30,7 +31,7 @@ export class GameLauncher {
     }
 
     resumeInput() {
-        GameShell.shell.print("원하는 메뉴 번호를 입력하세요 (1~3) : ");
+        GameShell.shell.print("원하는 메뉴 번호를 입력하세요 (1~3) : ", true);
     }
 
     private _executeMenu(readLine: string) {

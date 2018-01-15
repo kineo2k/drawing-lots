@@ -23,21 +23,21 @@ export class StageNumberOfWinners implements IStage {
     play(readLine: string) {
         const num = parseInt(readLine, 10);
         if (isNaN(num)) {
-            GameShell.shell.print(this.prompt);
+            GameShell.shell.print(this.prompt, true);
             return;
         }
 
         const numberOfWinners = parseInt(readLine, 10);
 
         if (this._data.players.length < numberOfWinners) {
-            GameShell.shell.println("    추첨인수는 등록한 플레이어 수보다 작아야합니다.");
-            GameShell.shell.print(this.prompt);
+            GameShell.shell.println("    추첨인수는 등록한 플레이어 수보다 작아야합니다.", true);
+            GameShell.shell.print(this.prompt, true);
             return;
         }
 
         this._data.numberOfWinners = numberOfWinners;
 
-        GameShell.shell.print(this.nextStage.prompt);
+        GameShell.shell.print(this.nextStage.prompt, true);
         GameShell.shell.listen(this.nextStage.play.bind(this.nextStage));
     }
 }

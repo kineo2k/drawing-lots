@@ -22,19 +22,19 @@ export class StageRegisterPlayers implements IStage {
 
     play(readLine: string) {
         if (readLine.trim().length === 0) {
-            GameShell.shell.print(this.prompt);
+            GameShell.shell.print(this.prompt, true);
             return;
         }
 
         const players = this._parsePlayers(readLine);
         if (players.length === 0) {
-            GameShell.shell.print(this.prompt);
+            GameShell.shell.print(this.prompt, true);
             return;
         }
-
+        
         this._data.players.push(...players);
 
-        GameShell.shell.print(this.nextStage.prompt);
+        GameShell.shell.print(this.nextStage.prompt, true);
         GameShell.shell.listen(this.nextStage.play.bind(this.nextStage));
     }
 

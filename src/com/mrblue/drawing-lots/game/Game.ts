@@ -23,7 +23,8 @@ export class Game {
     }
 
     start() {
-        GameShell.shell.println("제비 뽑기를 시작할께유~~!");
+        GameShell.shell.clear();
+        GameShell.shell.println("제비 뽑기를 시작할께유~~!", true);
         
         this._stages.forEach(function(stage, index) {
             if (index === 0)
@@ -34,7 +35,7 @@ export class Game {
         }.bind(this));
 
         const firstStage = this._stages[0];
-        GameShell.shell.print(firstStage.prompt);
+        GameShell.shell.print(firstStage.prompt, true);
         GameShell.shell.listen(firstStage.play.bind(firstStage));
     }
 }
